@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>PclCmu.Admin.Tests</RootNamespace>
+    <AssemblyName>PclCmu.Admin.Tests</AssemblyName>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <!-- The local SDK ships only the .NET 10 runtime; allow the net9 harness to
+         roll forward so tests can run without installing the 9.0 runtime. -->
+    <RollForward>LatestMajor</RollForward>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\PclCmu.Admin.csproj" />
+  </ItemGroup>
+
+</Project>

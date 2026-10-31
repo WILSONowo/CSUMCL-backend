@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>PclCmu.Admin</RootNamespace>
+    <AssemblyName>PclCmu.Admin</AssemblyName>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <!-- The app serves static files and data from externally configured paths
+         (/opt/pcl-cmu/wwwroot and /opt/pcl-cmu/data), not from the project's
+         wwwroot/data folders. Disable the static-web-assets pipeline so those
+         folders are not compiled into the publish output. -->
+    <StaticWebAssetsEnabled>false</StaticWebAssetsEnabled>
+    <!-- Keep the publish output directories out of the default Content/None
+         globs so a re-publish never tries to copy a previous output into
+         itself. -->
+    <DefaultItemExcludes>$(DefaultItemExcludes);publish*/**</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="certs\**;**\*.pem;**\*.key;**\*.pfx;**\*.p12;**\admin.env;**\.env;**\.env.*;**\*credentials*;appsettings.example.json" />
+    <None Remove="certs\**;**\*.pem;**\*.key;**\*.pfx;**\*.p12;**\admin.env;**\.env;**\.env.*;**\*credentials*;appsettings.example.json" />
+    <Content Remove="data\**" />
+    <Content Remove="wwwroot\**" />
+    <Content Remove="keys\**" />
+    <None Remove="data\**" />
+    <None Remove="wwwroot\**" />
+    <None Remove="keys\**" />
+    <!-- The self-contained test harness is its own project and must not be
+         compiled/published as part of the admin backend. -->
+    <Compile Remove="tests\**" />
+    <Content Remove="tests\**" />
+    <None Remove="tests\**" />
+    <EmbeddedResource Remove="tests\**" />
+  </ItemGroup>
+
+</Project>
